@@ -1,4 +1,4 @@
-package com.librarymanagemnt.UtilityClass;
+package com.librarymanagemnt.utilities;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;

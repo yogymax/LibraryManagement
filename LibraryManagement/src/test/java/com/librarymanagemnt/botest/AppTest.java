@@ -1,4 +1,4 @@
-package com.librarymanagemnt.BO;
+package com.librarymanagemnt.botest;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
