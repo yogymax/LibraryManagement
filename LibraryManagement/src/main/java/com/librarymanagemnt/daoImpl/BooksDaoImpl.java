@@ -11,12 +11,17 @@ import org.hibernate.Transaction;
 
 import com.librarymanagemnt.beanclasses.BooksBean;
 import com.librarymanagemnt.daointerfaces.BooksDao;
+import com.librarymanagemnt.entitybeans.BooksEntity;
 import com.librarymanagemnt.utilities.HibernateUtility;
 
 public class BooksDaoImpl implements BooksDao{
 
-	public void addBook(BooksBean book) {
-		// TODO Auto-generated method stub
+	public void addBook(BooksEntity book) {
+		Session session = HibernateUtility.getSessionFactory().openSession();
+		Transaction ts = session.beginTransaction();
+		session.save(book);
+		System.out.println("successfully added");
+		HibernateUtility.resourceCleanUp(session, ts);
 		
 	}
 
@@ -27,8 +32,8 @@ public class BooksDaoImpl implements BooksDao{
 
 	public void deleteBook(int bookId) {
 		
-		Session session = HibernateUtility.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
+		//Session session = HibernateUtility.getSessionFactory().openSession();
+		//Transaction transaction = session.beginTransaction();
 		//session.update(bk);
 		
 	}
@@ -38,25 +43,13 @@ public class BooksDaoImpl implements BooksDao{
 		return null;
 	}
 
-	public List<BooksBean> listofbooks() {
+	public List<BooksEntity> listofbooks() {
 		Session session = HibernateUtility.getSessionFactory().openSession();
 		Transaction transaction = null;
-		List<BooksBean> bk = new ArrayList();
-		try {
+		List<BooksEntity> bk = new ArrayList();
 			transaction = session.beginTransaction();
-			bk = session.createQuery("from Books").list();
-			for (Iterator iterator = bk.iterator(); iterator.hasNext();)
-			{
-				BooksBean books = (BooksBean) iterator.next();
-				System.out.println(books.getBook_nm());
-			}
-			transaction.commit();
-		} catch (HibernateException e) {
-			transaction.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
+			bk = session.createQuery("from BooksEntity").list();
+			HibernateUtility.resourceCleanUp(session, transaction);
 		return bk;
 	}
 

@@ -35,13 +35,13 @@ public class BooksEntity {
 	//price
 	private float price;
 	
-	@Column
+	/*@Column
 		//Author object
 	private AuthorsEntity auther;
 	
 	@Column
 		//Student object
-	private StudentEntity student;
+	private StudentEntity student;*/
 
 	public int getBookId() {
 		return bookId;
@@ -91,7 +91,7 @@ public class BooksEntity {
 		this.price = price;
 	}
 
-	public AuthorsEntity getAuther() {
+	/*public AuthorsEntity getAuther() {
 		return auther;
 	}
 
@@ -106,9 +106,8 @@ public class BooksEntity {
 	public void setStudent(StudentEntity student) {
 		this.student = student;
 	}
-
-	public BooksEntity(int bookId, String bookName, String pub_nm, String type, int quantity, float price, AuthorsEntity auther,
-			StudentEntity student) {
+*/
+	public BooksEntity(int bookId, String bookName, String pub_nm, String type, int quantity, float price) {
 		super();
 		this.bookId = bookId;
 		this.bookName = bookName;
@@ -116,8 +115,8 @@ public class BooksEntity {
 		this.type = type;
 		this.quantity = quantity;
 		this.price = price;
-		this.auther = auther;
-		this.student = student;
+		/*this.auther = auther;
+		this.student = student;*/
 	}
 
 	public BooksEntity() {

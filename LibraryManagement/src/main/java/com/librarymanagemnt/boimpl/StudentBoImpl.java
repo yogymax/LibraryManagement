@@ -11,10 +11,10 @@ import com.librarymanagemnt.entitybeans.StudentEntity;
 public class StudentBoImpl implements StudentBo {
 
 	StudentDao std = new StudentDaoImpl();
-	StudentBo stbo = new StudentBoImpl();
+	//StudentBo stbo = new StudentBoImpl();
 	public void addStudent(StudentBean stud) {
 		
-		StudentEntity stent= stbo.BeanToEntity(stud);
+		StudentEntity stent= BeanToEntity(stud);
 		std.addStudent(stent);
 	
 	}

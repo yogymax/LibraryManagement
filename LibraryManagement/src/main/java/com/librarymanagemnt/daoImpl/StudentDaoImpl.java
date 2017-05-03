@@ -16,9 +16,7 @@ public class StudentDaoImpl implements StudentDao {
 		Session session = HibernateUtility.getSessionFactory().openSession();
 		Transaction ts = session.beginTransaction();
 		session.persist(stud);
-		ts.commit();
-		session.flush();
-		session.close();
+		HibernateUtility.resourceCleanUp(session, ts);
 		
 	}
 
