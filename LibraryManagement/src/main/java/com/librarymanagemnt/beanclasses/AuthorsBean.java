@@ -3,7 +3,6 @@ package com.librarymanagemnt.beanclasses;
 public class AuthorsBean {
 
 	
-	//authorId
 	private int autherId;
 	
 	//authorName
