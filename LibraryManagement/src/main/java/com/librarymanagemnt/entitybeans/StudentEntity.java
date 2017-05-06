@@ -1,10 +1,18 @@
 package com.librarymanagemnt.entitybeans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * @author JARVIS
+ *
+ */
 @Entity
 @Table
 public class StudentEntity {
@@ -22,14 +30,15 @@ public class StudentEntity {
 	private String studLNm;
 	@Column
 	private String email;
+	@Column
+	private String active;
 	
-	public StudentEntity(int studId, String studFNm, String studLNm, String email, String gender) {
-		super();
-		this.studId = studId;
-		this.studFNm = studFNm;
-		this.studLNm = studLNm;
-		this.email = email;
-		this.gender = gender;
+	
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
 	}
 	public String getEmail() {
 		return email;
@@ -41,10 +50,30 @@ public class StudentEntity {
 		//gender
 	private String gender;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	 @JoinTable(name="stud_book", joinColumns=@JoinColumn(name="studID"), inverseJoinColumns=@JoinColumn(name="bookId"))  
+	private BooksEntity books;
 		//Department Object
-		//Book Object
+	@ManyToOne(cascade=CascadeType.ALL)
+	 @JoinTable(name="stud_dept", joinColumns=@JoinColumn(name="studID"), inverseJoinColumns=@JoinColumn(name="deptId"))  
+	private DepartmentEntity dept;
+	
+	//Book Object
 	public int getStudId() {
 		return studId;
+	}
+	
+	public BooksEntity getBooks() {
+		return books;
+	}
+	public void setBooks(BooksEntity books) {
+		this.books = books;
+	}
+	public DepartmentEntity getDept() {
+		return dept;
+	}
+	public void setDept(DepartmentEntity dept) {
+		this.dept = dept;
 	}
 	public void setStudId(int studId) {
 		this.studId = studId;
@@ -67,22 +96,28 @@ public class StudentEntity {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public StudentEntity(int studId, String studFNm, String studLNm, String gender) {
-		super();
-		this.studId = studId;
-		this.studFNm = studFNm;
-		this.studLNm = studLNm;
-		this.gender = gender;
-	}
+	
 	public StudentEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public StudentEntity(int studId, String studFNm, String studLNm, String email, String active, String gender) {
+		super();
+		this.studId = studId;
+		this.studFNm = studFNm;
+		this.studLNm = studLNm;
+		this.email = email;
+		this.active = active;
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
-		return "Student [studId=" + studId + ", studFNm=" + studFNm + ", studLNm=" + studLNm + ", email=" + email
-				+ ", gender=" + gender + "]";
+		return "StudentEntity [studId=" + studId + ", studFNm=" + studFNm + ", studLNm=" + studLNm + ", email=" + email
+				+ ", active=" + active + ", gender=" + gender + ", books=" + books + ", dept=" + dept + "]";
 	}
+	
+	
 
+	
 	
 }

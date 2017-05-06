@@ -15,6 +15,8 @@ public class BooksBean {
 	private int quanity;
 	//price
 	private float price;
+	
+	private String active;
 	//Author object
 	//private Authors auther;
 	//Student object
@@ -56,7 +58,14 @@ public class BooksBean {
 		this.price = price;
 	}
 	
-	public BooksBean(int book_Id, String book_nm, String pub_nm, String type, int quanity, float price) {
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
+	
+	public BooksBean(int book_Id, String book_nm, String pub_nm, String type, int quanity, float price, String active) {
 		super();
 		this.book_Id = book_Id;
 		this.book_nm = book_nm;
@@ -64,11 +73,15 @@ public class BooksBean {
 		this.type = type;
 		this.quanity = quanity;
 		this.price = price;
+		this.active = active;
 	}
 	public BooksBean() {
-		super();
-		
+		super();	
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "BooksBean [book_Id=" + book_Id + ", book_nm=" + book_nm + ", pub_nm=" + pub_nm + ", type=" + type
+				+ ", quanity=" + quanity + ", price=" + price + ", active=" + active + "]";
+	}
+		
 }

@@ -35,6 +35,11 @@ public class AuthorsBean {
 		super();
 		
 	}
+
+	@Override
+	public String toString() {
+		return "AuthorsBean [autherId=" + autherId + ", autherName=" + autherName + "]";
+	}
 	
 	
 }

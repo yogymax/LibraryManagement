@@ -20,11 +20,12 @@
        	 <property name="show_sql">true</property>
        	
        	 <property name="hibernate.hbm2ddl.auto">create-drop</property>
+       	 <property name = "hibernate.current_session_context_class">thread</property>
        
          <mapping class="com.librarymanagemnt.entitybeans.BooksEntity" />
          <mapping class="com.librarymanagemnt.entitybeans.StudentEntity" />
-         <!-- <mapping class="com.librarymanagemnt.EntityBeans.Department" />
-         <mapping class="com.librarymanagemnt.EntityBeans.Authers" /> -->
+         <mapping class="com.librarymanagemnt.entitybeans.DepartmentEntity" />
+         <mapping class="com.librarymanagemnt.entitybeans.AuthorsEntity" /> 
         
     </session-factory>
  

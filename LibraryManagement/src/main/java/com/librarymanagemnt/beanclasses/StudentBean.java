@@ -1,5 +1,7 @@
 package com.librarymanagemnt.beanclasses;
 
+import java.util.List;
+
 public class StudentBean {
 
 	
@@ -13,8 +15,25 @@ public class StudentBean {
 	private String stud_email;
 	//gender
 	private String gender;
+	
+	private String active;
 	//Department Object
+	private DepartmentBean dept;
 	//Book Object
+	private List<BooksBean> bkbean;
+	public DepartmentBean getDept() {
+		return dept;
+	}
+	public void setDept(DepartmentBean dept) {
+		this.dept = dept;
+	}
+	public List<BooksBean> getBkbean() {
+		return bkbean;
+	}
+	public void setBkbean(List<BooksBean> bkbean) {
+		this.bkbean = bkbean;
+	}
+	
 	public int getStud_Id() {
 		return stud_Id;
 	}
@@ -45,22 +64,31 @@ public class StudentBean {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public StudentBean(int stud_Id, String stud_FName, String stud_LName, String stud_email, String gender) {
+	
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
+	
+	public StudentBean(int stud_Id, String stud_FName, String stud_LName, String stud_email, String gender,
+			String active) {
 		super();
 		this.stud_Id = stud_Id;
 		this.stud_FName = stud_FName;
 		this.stud_LName = stud_LName;
 		this.stud_email = stud_email;
 		this.gender = gender;
+		this.active = active;
 	}
 	public StudentBean() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "Student [stud_Id=" + stud_Id + ", stud_FName=" + stud_FName + ", stud_LName=" + stud_LName
-				+ ", stud_email=" + stud_email + ", gender=" + gender + "]";
+		return "StudentBean [stud_Id=" + stud_Id + ", stud_FName=" + stud_FName + ", stud_LName=" + stud_LName
+				+ ", stud_email=" + stud_email + ", gender=" + gender + ", active=" + active + "]";
 	}
-	
-	
+
 }

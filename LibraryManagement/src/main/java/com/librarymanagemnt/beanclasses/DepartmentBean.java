@@ -27,6 +27,10 @@ public class DepartmentBean {
 	public DepartmentBean() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "DepartmentBean [dept_Id=" + dept_Id + ", dept_nm=" + dept_nm + "]";
+	}
 	
 	
 	

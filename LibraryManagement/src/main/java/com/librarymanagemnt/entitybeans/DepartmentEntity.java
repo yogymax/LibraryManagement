@@ -1,10 +1,12 @@
 package com.librarymanagemnt.entitybeans;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,13 +15,22 @@ public class DepartmentEntity {
 
 	@Id
 	@Column
-	@GeneratedValue(strategy= GenerationType.IDENTITY) 
+	//@GeneratedValue(strategy= GenerationType.IDENTITY) 
 	//deptId
 	private int deptId;
 	
 	@Column
 		//deptName
 	private String deptName;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="dept")
+	private Set<StudentEntity> students;
+	public Set<StudentEntity> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<StudentEntity> students) {
+		this.students = students;
+	}
 
 	public int getDeptId() {
 		return deptId;
@@ -46,6 +57,11 @@ public class DepartmentEntity {
 	public DepartmentEntity() {
 		super();
 		
+	}
+
+	@Override
+	public String toString() {
+		return "DepartmentEntity [deptId=" + deptId + ", deptName=" + deptName + "]";
 	}
 	
 	
